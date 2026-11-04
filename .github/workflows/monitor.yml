@@ -1,0 +1,45 @@
+name: monitor
+
+on:
+  schedule:
+    - cron: "23 * * * *"  # hourly
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "v4quote==0.3.0"
+      - name: Collect snapshot (keeps the committed data.json if the run fails)
+        env:
+          ROBINHOOD_RPC_URL: https://rpc.mainnet.chain.robinhood.com
+        run: python monitor/collect.py || echo "::warning::collect failed, publishing the previous data.json"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

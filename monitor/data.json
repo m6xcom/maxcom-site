@@ -1,0 +1,973 @@
+{
+ "block": 105924438,
+ "timestamp": 1793797774,
+ "generated": 1793797954,
+ "markets": [
+  {
+   "id": "0x8b16891f032a93b771347c9cb470a780e6699dd701553d3402aa3cdba6189c3e",
+   "ticker": "NVDA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xED29D310cfa91778A5850538DA28ed42234Cb78c",
+   "oracle_type": "Unknown",
+   "oracle_age_h": 0.21388888888888888,
+   "oracle_price_usd": 204.15343063434196,
+   "dex_price_usd": 204.481,
+   "supply": 710076.046401,
+   "borrow": 625286.906279,
+   "borrowers": 3,
+   "top_borrower_share": 0.9999800822232563,
+   "first_liq_drop": 0.243132773300467,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 12.454325,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.07637524935109348,
+     "exit_impact": 2.8773406707260918e-05,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 12.454325,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.08592215551998016,
+     "exit_impact": 3.1775777592613075e-05,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 625286.9062800001,
+     "bad_debt": 0.0,
+     "seized_tokens": 4930.105926460766,
+     "exit_impact": 0.6748002542515521,
+     "exit_exact": false
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 1321835.9701765373
+  },
+  {
+   "id": "0x9b4b47cdf7e295341c6c6cdfd3efb9805c4a5b3d580dba0c0c39d3a4232b297b",
+   "ticker": "SPCX",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x872F9D8955B34e841227a92dE755cd63042Ab7A5",
+   "oracle_type": "Unknown",
+   "oracle_age_h": 0.006111111111111111,
+   "oracle_price_usd": 130.97890064728705,
+   "dex_price_usd": 130.8918,
+   "supply": 593174.067197,
+   "borrow": 527220.426516,
+   "borrowers": 5,
+   "top_borrower_share": 0.9952316770319327,
+   "first_liq_drop": 0.20629782170392408,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 2.842562,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.027170506468641345,
+     "exit_impact": -1.4098762357583894e-07,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 2.842562,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.03056681977722152,
+     "exit_impact": -2.3471545529396565e-07,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 524709.311811,
+     "bad_debt": 0.0,
+     "seized_tokens": 6448.386036281664,
+     "exit_impact": 0.6336560970316925,
+     "exit_exact": false
+    }
+   },
+   "vaults": {
+    "NetNet Credit": 303976.3462357132
+   },
+   "collateral_usd": 1064330.9716756514
+  },
+  {
+   "id": "0x7fa81b10e5d21b2e4c571f862442bc11aff2ed14f02335868d0ff933fd40d0ba",
+   "ticker": "GOOGL",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x12Ec3474D1e321e0aAB065278B97FBC7eDa5F424",
+   "oracle_type": "Unknown",
+   "oracle_age_h": 0.06138888888888889,
+   "oracle_price_usd": 282.1612674570919,
+   "dex_price_usd": 282.1681,
+   "supply": 292023.393266,
+   "borrow": 265507.998461,
+   "borrowers": 2,
+   "top_borrower_share": 0.9998266242438395,
+   "first_liq_drop": 0.20260499541823307,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 265461.965812,
+     "bad_debt": 0.0,
+     "seized_tokens": 1514.39269793699,
+     "exit_impact": "beyond_range",
+     "exit_exact": false
+    }
+   },
+   "vaults": {
+    "NetNet Credit": 187791.49373095474
+   },
+   "collateral_usd": 532800.238606124
+  },
+  {
+   "id": "0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45",
+   "ticker": "AAPL",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xD625d488D552775D2867194C618B945E5dDfE097",
+   "oracle_type": "Unknown",
+   "oracle_age_h": 0.25194444444444447,
+   "oracle_price_usd": 336.5854751890314,
+   "dex_price_usd": 337.45259999999996,
+   "supply": 222209.044795,
+   "borrow": 201821.599805,
+   "borrowers": 5,
+   "top_borrower_share": 0.9997460808206406,
+   "first_liq_drop": 0.3360929201122205,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 22.704618,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.08445161467082347,
+     "exit_impact": 1.0770593612763335e-05,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 50.221124,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.2101516039129837,
+     "exit_impact": 2.914897381489645e-05,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 50.221124,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.24017326161483857,
+     "exit_impact": 3.35309059756872e-05,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "NetNet Credit": 144896.6764564771
+   },
+   "collateral_usd": 486356.3803481214
+  },
+  {
+   "id": "0xf5ff7d546af5e72f3912d2aa723088fd0bf66fddc158714995637714d9db6e4c",
+   "ticker": "NVDA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x37CF511fA79B8446f1C23D6a81Df117F28240bE0",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.21388888888888888,
+   "oracle_price_usd": 203.99530180660497,
+   "dex_price_usd": 204.481,
+   "supply": 74642.403673,
+   "borrow": 58975.451821,
+   "borrowers": 10,
+   "top_borrower_share": 0.9327860679101667,
+   "first_liq_drop": 0.21293500408023347,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 1.100207,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.006752169988318772,
+     "exit_impact": -1.107140681355645e-06,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 26.587549000000003,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.18356918900111446,
+     "exit_impact": 5.941793734398626e-05,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 55038.067361,
+     "bad_debt": 0.0,
+     "seized_tokens": 434.28677900095175,
+     "exit_impact": 0.00817185421867106,
+     "exit_exact": false
+    }
+   },
+   "vaults": {
+    "Galaxy USDG RH Stock Tokens": 74634.70445858056
+   },
+   "collateral_usd": 124192.24724856377
+  },
+  {
+   "id": "0xcaa167af7ba0422c76424fae56167b7db25bf19f4f435215e6dd7d06a943bdac",
+   "ticker": "AAPL",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xA39F2c101bCc19aD5d0C7b83281F94a5ADe2a344",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.25194444444444447,
+   "oracle_price_usd": 336.3950486593351,
+   "dex_price_usd": 337.45259999999996,
+   "supply": 28888.986085,
+   "borrow": 26000.097083,
+   "borrowers": 2,
+   "top_borrower_share": 0.9999999614616824,
+   "first_liq_drop": 0.2221383834832361,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 26000.096082,
+     "bad_debt": 0.0,
+     "seized_tokens": 124.41105023925738,
+     "exit_impact": 0.008029229018695183,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Galaxy USDG RH Stock Tokens": 28866.037765064768
+   },
+   "collateral_usd": 53480.15512503148
+  },
+  {
+   "id": "0xba01f6625137b692c5dd86afb8e654b4016d7b64e36dfca4124e84bef98bc4d2",
+   "ticker": "GOOGL",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xE8F50Ad9C0d52dd90c324d63Ae936681e6736B2D",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.06138888888888889,
+   "oracle_price_usd": 282.10656010770566,
+   "dex_price_usd": 282.1681,
+   "supply": 24757.89764,
+   "borrow": 22282.471703,
+   "borrowers": 6,
+   "top_borrower_share": 0.9651540527783653,
+   "first_liq_drop": 0.09119506908144503,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 580.101579,
+     "bad_debt": 0.0,
+     "seized_tokens": 2.5744234996492064,
+     "exit_impact": 0.0001570048483385822,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 580.101579,
+     "bad_debt": 0.0,
+     "seized_tokens": 2.896226437105357,
+     "exit_impact": 0.0001767142859063764,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 580.101579,
+     "bad_debt": 0.0,
+     "seized_tokens": 3.3099730709775517,
+     "exit_impact": 0.000202052238123418,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Galaxy USDG RH Stock Tokens": 24555.296734319698
+   },
+   "collateral_usd": 70452.77695859609
+  },
+  {
+   "id": "0x7408b08b03e05ffd2d21c797489a0e77a28e4bb36acb4e827c69e805d06272b4",
+   "ticker": "GOOGL",
+   "lltv": 0.77,
+   "lif": 1.0741138560687433,
+   "oracle": "0x75e5f0E2Fa72E6633371868EC62Ddeaf534914D0",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.06138888888888889,
+   "oracle_price_usd": 282.08954343999994,
+   "dex_price_usd": 282.1681,
+   "supply": 23872.721475,
+   "borrow": 21516.174208,
+   "borrowers": 7,
+   "top_borrower_share": 0.6232983510676223,
+   "first_liq_drop": 0.11471164137219103,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.013179,
+     "bad_debt": 0.0,
+     "seized_tokens": 5.57574982771812e-05,
+     "exit_impact": 6.275665285626619e-05,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 7854.1064559999995,
+     "bad_debt": 0.0,
+     "seized_tokens": 37.38265369814629,
+     "exit_impact": 0.0027806957764417994,
+     "exit_exact": false
+    },
+    "30": {
+     "debt_liquidatable": 7509.507102651844,
+     "bad_debt": 344.59935334815555,
+     "seized_tokens": 40.84855738076065,
+     "exit_impact": 0.0031099157410585665,
+     "exit_exact": false
+    }
+   },
+   "vaults": {
+    "Yearn Stonk USDG": 4499.667752810871,
+    "Steakhouse USDG": 19370.705464771498
+   },
+   "collateral_usd": 50027.77354122918
+  },
+  {
+   "id": "0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55",
+   "ticker": "SPY",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xe8dAb19184f72b5a5a9d51A6C50A1b04b0669ce7",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 2.7125,
+   "oracle_price_usd": 763.4803771663506,
+   "dex_price_usd": 762.1671,
+   "supply": 8178.304183,
+   "borrow": 8178.009144,
+   "borrowers": 11,
+   "top_borrower_share": 0.3485065102120247,
+   "first_liq_drop": 0.14362399980640517,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 1.600162,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.002623947867253106,
+     "exit_impact": -6.317680358858269e-07,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 1261.249427,
+     "bad_debt": 0.0,
+     "seized_tokens": 2.3267233799185387,
+     "exit_impact": 7.999481988518742e-05,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 5287.202558000001,
+     "bad_debt": 0.0,
+     "seized_tokens": 11.147094114059646,
+     "exit_impact": 0.0002605281055361175,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 18638.40634288126
+  },
+  {
+   "id": "0xeb1739b2a69dd22a4285d366a06698a01018b37c24d2994fefe19cc72f313613",
+   "ticker": "SPY",
+   "lltv": 0.77,
+   "lif": 1.0741138560687433,
+   "oracle": "0xae67AE490E82F186F34977Cb6ed117b2585ECf6F",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 2.7125,
+   "oracle_price_usd": 763.4343240299999,
+   "dex_price_usd": 762.1671,
+   "supply": 3270.373714,
+   "borrow": 2766.260251,
+   "borrowers": 6,
+   "top_borrower_share": 0.6507199101737158,
+   "first_liq_drop": 0.2091765152538887,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 2.876848,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.00449731227157811,
+     "exit_impact": -4.5166593931611487e-07,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 2.876848,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0050594763055253735,
+     "exit_impact": -4.19250325567333e-07,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 2002.7251473579158,
+     "bad_debt": 0.33076464208407463,
+     "seized_tokens": 4.025334246583042,
+     "exit_impact": 0.00011515477820323028,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Steakhouse USDG": 3265.050528953092
+   },
+   "collateral_usd": 5070.496113279967
+  },
+  {
+   "id": "0x22e4598e5cc16cff0056e72d61c5f1f2f8bf5bbffc22da5277ab196939c8a59e",
+   "ticker": "TSLA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xe343124476849d6F161E380d682b9603e97903d3",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.21805555555555556,
+   "oracle_price_usd": 376.8967344110196,
+   "dex_price_usd": 377.27439999999996,
+   "supply": 1469.899782,
+   "borrow": 1322.93678,
+   "borrowers": 6,
+   "top_borrower_share": 0.7561907338365923,
+   "first_liq_drop": 0.09435462783764414,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 145.032623,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.48176190534693064,
+     "exit_impact": 0.00015653246505742402,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 145.032623,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.541982143515297,
+     "exit_impact": 0.00017652931182621234,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 1145.425159,
+     "bad_debt": 0.0,
+     "seized_tokens": 4.891904180452025,
+     "exit_impact": 0.0016075288621276718,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Galaxy USDG RH Stock Tokens": 1269.6777723251091
+   },
+   "collateral_usd": 3002.3265542795916
+  },
+  {
+   "id": "0x66306c087add8907752320b309934abcc354d21626de8115c79df49d9c214edc",
+   "ticker": "NVDA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xC5b8A6C5fDF14f9744dB1C8595f49E42Ce23031a",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.21388888888888888,
+   "oracle_price_usd": 203.99530180660497,
+   "dex_price_usd": 204.481,
+   "supply": 725.3174,
+   "borrow": 724.707352,
+   "borrowers": 14,
+   "top_borrower_share": 0.45535792468750136,
+   "first_liq_drop": 0.23969361928167088,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 20.693786,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.1270015195085027,
+     "exit_impact": 4.380966516115414e-05,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 74.200902,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.5123074489976933,
+     "exit_impact": 0.00014645759299747318,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 704.2624920000001,
+     "bad_debt": 0.0,
+     "seized_tokens": 5.55709718540354,
+     "exit_impact": 0.00046697514766302906,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 2330.296106702961
+  },
+  {
+   "id": "0x10151e2ac82a820153520d9d77d56de1c84775e23b79bdc11e2e34282d9afa10",
+   "ticker": "SPCX",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xb9BdE79161100a218D8B036CBf69cbcdFb71440a",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.006111111111111111,
+   "oracle_price_usd": 130.971,
+   "dex_price_usd": 130.8918,
+   "supply": 670.455698,
+   "borrow": 604.273218,
+   "borrowers": 2,
+   "top_borrower_share": 0.9984812863268726,
+   "first_liq_drop": 0.4001751107933772,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Yearn Stonk USDG": 120.03458518735152,
+    "Steakhouse USDG": 550.354183897382
+   },
+   "collateral_usd": 1612.855272409553
+  },
+  {
+   "id": "0x69400cfe81f2ae381b9a9f27076a4d637338379d999e9ffdfbde52f0876312ee",
+   "ticker": "META",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xf7282cD4277296D41d6Fdb80e2fBD73f03881B6C",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.2,
+   "oracle_price_usd": 622.7021268122893,
+   "dex_price_usd": 624.8118,
+   "supply": 165.844899,
+   "borrow": 165.844899,
+   "borrowers": 1,
+   "top_borrower_share": 1.0,
+   "first_liq_drop": 0.5738703515300678,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 622.7021268122893
+  },
+  {
+   "id": "0x21ea2a012b888120e328775c2a7bf6fb4619cf4c4c631ad1c9b6db51f8882d5a",
+   "ticker": "SPCX",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x90805011F903b1d31CE2A3C6DBfDCCff282B30B4",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.006111111111111111,
+   "oracle_price_usd": 130.97890064728705,
+   "dex_price_usd": 130.8918,
+   "supply": 256.073856,
+   "borrow": 160.19779,
+   "borrowers": 3,
+   "top_borrower_share": 0.6252798454630377,
+   "first_liq_drop": 0.5113867422403493,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 60.028337,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.7377149240138471,
+     "exit_impact": 1.1550138768412488e-05,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Galaxy USDG RH Stock Tokens": 256.04743492114216
+   },
+   "collateral_usd": 463.52192821988996
+  },
+  {
+   "id": "0x508b47fb12dbb8747644d4436aae65489b5f2819936adefc8a591323f64a5b01",
+   "ticker": "COIN",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x05dd0593082aEA1f5fBbE560D0a6a4D52451e980",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.1388888888888889,
+   "oracle_price_usd": 144.09329170735577,
+   "dex_price_usd": null,
+   "supply": 100.011327,
+   "borrow": 100.010324,
+   "borrowers": 1,
+   "top_borrower_share": 1.0,
+   "first_liq_drop": 0.19999312947634829,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 100.010324,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.9775584248132971,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 100.010324,
+     "bad_debt": 0.0,
+     "seized_tokens": 1.1172096283580537,
+     "exit_impact": null,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 200.01893020651153
+  },
+  {
+   "id": "0xf0959f62e748938cf260ca6fe7cb21a412e0a6643913460f4a6770c3f4b90af6",
+   "ticker": "CRCL",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x5407188617476660Ff02833608C88C20394E52e1",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.0038888888888888888,
+   "oracle_price_usd": 73.14226194124029,
+   "dex_price_usd": 73.1783,
+   "supply": 98.005246,
+   "borrow": 98.005046,
+   "borrowers": 1,
+   "top_borrower_share": 1.0,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 98.005046,
+     "bad_debt": 0.0,
+     "seized_tokens": 1.8872163970978955,
+     "exit_impact": 0.0003960345381415209,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 98.005046,
+     "bad_debt": 0.0,
+     "seized_tokens": 2.1568187395404523,
+     "exit_impact": 0.0004264510841257563,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 185.1952038206455
+  },
+  {
+   "id": "0x597227ca652ea5e8afb6e4801ecd766a4d6eb9b3b9fafa9127ba88a8b1f19629",
+   "ticker": "SPCX",
+   "lltv": 0.385,
+   "lif": 1.15,
+   "oracle": "0xE9D89DF41F3ED22832CC32fd64e94A145f757315",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.006111111111111111,
+   "oracle_price_usd": 130.97890064728705,
+   "dex_price_usd": 130.8918,
+   "supply": 33.13729,
+   "borrow": 33.130535,
+   "borrowers": 2,
+   "top_borrower_share": 0.9055211180404688,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 30.0004,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.3292558937880599,
+     "exit_impact": 4.677796869190232e-06,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 33.130536,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.4155534780434355,
+     "exit_impact": 6.135719143651741e-06,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 98.665449797467
+  },
+  {
+   "id": "0xb5ba72c0d55c353fa37c0bea104eb117afb2f4934473bcb736d2218ae5686746",
+   "ticker": "PLTR",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x3b1905b76Fa4cFf867BA33C6222D227E29F99bcc",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.13111111111111112,
+   "oracle_price_usd": 165.49398259703025,
+   "dex_price_usd": null,
+   "supply": 30.138689,
+   "borrow": 30.138389,
+   "borrowers": 1,
+   "top_borrower_share": 1.0,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 162.74772173905342
+  },
+  {
+   "id": "0xb41b34c5989420ad080e79363a9cfe3e23bec7459fcd2d88029250da370288df",
+   "ticker": "TSLA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0xCa76875634e0b9759AA6610dC3092e92fcefE46E",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.21805555555555556,
+   "oracle_price_usd": 376.8967344110196,
+   "dex_price_usd": 377.27439999999996,
+   "supply": 13.098625,
+   "borrow": 12.443907,
+   "borrowers": 2,
+   "top_borrower_share": 0.999999919639393,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 12.443907,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.053145681493151346,
+     "exit_impact": 1.41691153607848e-05,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 25.59817335637226
+  },
+  {
+   "id": "0xf4dff250826a86627545e5c6594b3b249db3ad2ec5eed56c02833d2a67acf445",
+   "ticker": "TSLA",
+   "lltv": 0.77,
+   "lif": 1.0741138560687433,
+   "oracle": "0x280855A5BF983bf005f19992C157007930B3de2A",
+   "oracle_type": "Unknown",
+   "oracle_age_h": null,
+   "oracle_price_usd": 376.874,
+   "dex_price_usd": 377.27439999999996,
+   "supply": 15.012678,
+   "borrow": 11.887334,
+   "borrowers": 2,
+   "top_borrower_share": 0.7896920546110628,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 0.0,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.0,
+     "exit_impact": null,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 9.387334,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.03822067671326765,
+     "exit_impact": 9.214806814927812e-06,
+     "exit_exact": true
+    }
+   },
+   "vaults": {},
+   "collateral_usd": 23.162903414771904
+  },
+  {
+   "id": "0x95312f02c1dae8407b2c80468a5657a9bd19c45ac277f1a61aa52c11444c5314",
+   "ticker": "NVDA",
+   "lltv": 0.625,
+   "lif": 1.1267605633802817,
+   "oracle": "0x418dA8bE2D981f152fd9Fc64ED42BE2Cdea52c5A",
+   "oracle_type": "ChainlinkOracleV2",
+   "oracle_age_h": 0.21388888888888888,
+   "oracle_price_usd": 203.98299681,
+   "dex_price_usd": 204.481,
+   "supply": 2.228791,
+   "borrow": 2.228287,
+   "borrowers": 2,
+   "top_borrower_share": 0.9999878830743602,
+   "first_liq_drop": null,
+   "stress": {
+    "10": {
+     "debt_liquidatable": 2.228261,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.013676067008755623,
+     "exit_impact": 1.7371802445431683e-06,
+     "exit_exact": true
+    },
+    "20": {
+     "debt_liquidatable": 2.228261,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.015385575384850074,
+     "exit_impact": 2.8099513667001474e-06,
+     "exit_exact": true
+    },
+    "30": {
+     "debt_liquidatable": 2.228261,
+     "bad_debt": 0.0,
+     "seized_tokens": 0.01758351472554295,
+     "exit_impact": 3.8032579618985096e-06,
+     "exit_exact": true
+    }
+   },
+   "vaults": {
+    "Yearn Stonk USDG": 1.2276131953295801
+   },
+   "collateral_usd": 222.30236823411357
+  }
+ ],
+ "vaults": [
+  {
+   "name": "Galaxy USDG RH Stock Tokens",
+   "address": "0xd0dACE70434fF7567b108B5a8c2a36C150C830FE",
+   "tvl": 502855.5314214441,
+   "stock_usd": 129581.76416521127
+  },
+  {
+   "name": "NetNet Credit",
+   "address": "0x99347d5F70D3838763f6Bddcf80304C8aa953B57",
+   "tvl": 804158.8286015532,
+   "stock_usd": 636664.5164231451
+  },
+  {
+   "name": "Yearn Stonk USDG",
+   "address": "0x8c258F25fc6fBe3f01ccC828E2C3840A46a4a9A2",
+   "tvl": 203620.17918271568,
+   "stock_usd": 4620.929951193552
+  },
+  {
+   "name": "Steakhouse USDG",
+   "address": "0xBeEff033F34C046626B8D0A041844C5d1A5409dd",
+   "tvl": 514771001.65037346,
+   "stock_usd": 23186.110177621973
+  }
+ ],
+ "pools_loaded": {
+  "SPCX": 3,
+  "NVDA": 4,
+  "SPY": 3,
+  "CRCL": 2,
+  "META": 2,
+  "GLD": 2,
+  "MSTR": 1,
+  "TSLA": 3,
+  "GOOGL": 2,
+  "AAPL": 3
+ }
+}

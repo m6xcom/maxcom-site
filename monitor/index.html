@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock Collateral Monitor</title>
+<meta name="description" content="Hourly risk snapshot of stock-token collateral on Morpho, Robinhood Chain: liquidation distance, oracle freshness and the cost of selling seized collateral into the DEX pools.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0e14'/%3E%3Cpath d='M7 22 L13 10 L19 18 L25 8' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0e14; --panel: #11151e; --line: #262d3e; --text: #e6edf3; --muted: #8b949e;
+    --cyan: #22d3ee; --violet: #8b5cf6; --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  main { max-width: 1160px; margin: 0 auto; padding: 40px 16px 64px; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1 { font-size: clamp(24px, 4vw, 32px); margin: 0 0 8px; line-height: 1.25; }
+  .sub { color: var(--muted); margin: 0 0 6px; max-width: 760px; }
+  .meta { color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .tile b { display: block; font: 600 22px/1.25 Consolas, monospace; }
+  .tile span { color: var(--muted); font-size: 13px; }
+  h2 { font-size: 19px; margin: 28px 0 10px; }
+  .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th, td { padding: 9px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background: var(--panel); }
+  td:first-child, th:first-child { text-align: left; }
+  tr:last-child td { border-bottom: 0; }
+  .mono { font-family: Consolas, monospace; }
+  .muted { color: var(--muted); }
+  .good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+  .note { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  details { margin-top: 28px; color: var(--muted); font-size: 14px; }
+  details summary { cursor: pointer; color: var(--text); }
+  details li { margin: 6px 0; }
+  .toggle { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="meta"><a href="../">← maxcom.pp.ua</a></p>
+  <h1>Stock-token collateral on Morpho, Robinhood Chain</h1>
+  <p class="sub">How far each market is from liquidation, how fresh its oracle is, and what selling the seized collateral into today's DEX pools would cost. Exit cost is computed with <a href="https://github.com/m6xcom/v4quote">v4quote</a> against the pools' exact state.</p>
+  <p class="meta" id="stamp">Loading…</p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <h2>Markets</h2>
+  <p class="toggle"><label><input type="checkbox" id="small"> show markets under $1k borrowed</label></p>
+  <div class="scroll"><table id="markets"><thead><tr>
+    <th>Market</th><th>Borrowed</th><th>Borrowers</th><th>Largest borrower</th><th>First liquidation</th>
+    <th>Oracle</th><th>Feed age</th><th>Liquidatable at −20%</th><th>at −30%</th><th>Exit cost at −30%</th><th>Supplying vaults</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="note">Exit cost: price impact of selling the collateral a −30% move would make seizable, through the best single pool or two-pool split of the token's main USDG pools, against the DEX price now. Red when it exceeds the liquidation bonus, i.e. a liquidator would lose money.</p>
+
+  <h2>Vaults lending against stock tokens</h2>
+  <div class="scroll"><table id="vaults"><thead><tr>
+    <th>Vault</th><th>TVL</th><th>In stock-collateral markets</th><th>Share</th>
+  </tr></thead><tbody></tbody></table></div>
+
+  <details>
+    <summary>Method and limits</summary>
+    <ul>
+      <li>Snapshot at one block, refreshed hourly. Market totals, positions and oracle prices are read with eth_call at that block; borrower lists and vault allocations come from Morpho's public API.</li>
+      <li>Liquidatable debt applies a uniform drop to the oracle price of the collateral. The liquidation bonus is Morpho's LIF = min(1.15, 1 / (1 − 0.3 × (1 − LLTV))).</li>
+      <li>Exit cost uses the token's highest-volume USDG pools only (Uniswap v3 / v4 incl. fee-only hooks, Ramses V3, Slipstream). It assumes the pools look like they do now when the drop happens. "≤" marks an upper bound: some candidate pool ran past the price range loaded for it. "&gt;71%" means every route did.</li>
+      <li>Feed age is the time since the oracle's stock feed last updated. Feeds do not update from Friday close to Sunday evening ET, so 48–57 h is normal on weekends. The custom oracle used by the largest markets reverts when its feed is older than 96 h; MorphoChainlinkOracleV2 has no staleness check.</li>
+      <li>Not investment advice. Point-in-time data; errors are possible.</li>
+    </ul>
+  </details>
+
+  <footer>Built by <a href="https://x.com/0xMaxcom">@0xMaxcom</a> · contact <a href="mailto:maxcom@maxcom.pp.ua">maxcom@maxcom.pp.ua</a></footer>
+</main>
+<script>
+const usd = v => v == null ? "–" : "$" + (Math.abs(v) >= 1e6 ? (v / 1e6).toFixed(2) + "M" : Math.abs(v) >= 1e3 ? (v / 1e3).toFixed(1) + "k" : v.toFixed(0));
+const pct = v => v == null ? "–" : v > 0 && v < 0.001 ? "<0.1%" : (v * 100).toFixed(1) + "%";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function exitCell(s, bonus) {
+  if (!s || !s.debt_liquidatable) return '<span class="muted">nothing seized</span>';
+  const e = s.exit_impact;
+  if (e === "beyond_range") return '<span class="bad">&gt;71%</span>';
+  if (e == null) return '<span class="muted">no pool data</span>';
+  const cls = e > bonus ? "bad" : e > bonus / 2 ? "warn" : "good";
+  return `<span class="${cls}">${s.exit_exact ? "" : "≤ "}${pct(Math.max(e, 0))}</span>`;
+}
+function render(d) {
+  const t = new Date(d.timestamp * 1000);
+  document.getElementById("stamp").textContent = `Block ${d.block.toLocaleString("en-US")} · ${t.toUTCString().replace("GMT", "UTC")}`;
+  const ms = d.markets;
+  const borrowed = ms.reduce((a, m) => a + m.borrow, 0);
+  const coll = ms.reduce((a, m) => a + m.collateral_usd, 0);
+  const at30 = ms.reduce((a, m) => a + (m.stress["30"] ? m.stress["30"].debt_liquidatable : 0), 0);
+  const unprofitable = ms.filter(m => { const s = m.stress["30"]; return s && s.debt_liquidatable > 1000 && (s.exit_impact === "beyond_range" || s.exit_impact > m.lif - 1); })
+                         .reduce((a, m) => a + m.stress["30"].debt_liquidatable, 0);
+  document.getElementById("tiles").innerHTML = [
+    [usd(borrowed), "borrowed against stock tokens"], [usd(coll), "stock collateral at oracle price"],
+    [usd(at30), "liquidatable after a 30% drop"], [usd(unprofitable), "of it where our best exit route costs more than the liquidation bonus"],
+  ].map(([b, s]) => `<div class="tile"><b>${b}</b><span>${s}</span></div>`).join("");
+  const showSmall = document.getElementById("small").checked;
+  document.querySelector("#markets tbody").innerHTML = ms.filter(m => showSmall || m.borrow >= 1000).map(m => {
+    const fl = m.first_liq_drop;
+    const flc = fl == null ? "muted" : fl < 0.1 ? "bad" : fl < 0.2 ? "warn" : "";
+    const custom = m.oracle_type !== "ChainlinkOracleV2";
+    const age = m.oracle_age_h == null ? "–" : m.oracle_age_h < 1 ? Math.round(m.oracle_age_h * 60) + " min" : m.oracle_age_h.toFixed(1) + " h";
+    const vs = Object.keys(m.vaults).map(esc).join(", ") || '<span class="muted">direct suppliers</span>';
+    return `<tr><td><b>${esc(m.ticker)}</b> <span class="muted mono">${esc(m.id.slice(0, 10))}</span><br><span class="muted">LLTV ${(m.lltv * 100).toFixed(1)}% · bonus ${pct(m.lif - 1)}</span></td>
+      <td>${usd(m.borrow)}</td><td>${m.borrowers}</td><td>${pct(m.top_borrower_share)}</td>
+      <td class="${flc}">${fl == null ? "–" : "−" + pct(fl)}</td>
+      <td>${custom ? "custom, stale-checked" : "MorphoChainlinkOracleV2"}</td><td>${age}</td>
+      <td>${usd(m.stress["20"].debt_liquidatable)}</td><td>${usd(m.stress["30"].debt_liquidatable)}</td>
+      <td>${exitCell(m.stress["30"], m.lif - 1)}</td><td style="text-align:left">${vs}</td></tr>`;
+  }).join("");
+  document.querySelector("#vaults tbody").innerHTML = d.vaults.sort((a, b) => b.stock_usd - a.stock_usd).map(v =>
+    `<tr><td>${esc(v.name)} <span class="muted mono">${esc(v.address.slice(0, 10))}</span></td><td>${usd(v.tvl)}</td><td>${usd(v.stock_usd)}</td><td>${pct(v.stock_usd / v.tvl)}</td></tr>`).join("");
+}
+let data = null;
+document.getElementById("small").addEventListener("change", () => data && render(data));
+fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(d => { data = d; render(d); })
+  .catch(() => { document.getElementById("stamp").textContent = "Data not available right now."; });
+</script>
+</body>
+</html>
