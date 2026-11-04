@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maksym · onchain math and DeFi risk</title>
+<meta name="description" content="Exact swap math (v4quote) and risk research for stock-token DeFi on Robinhood Chain and Arbitrum.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0e14'/%3E%3Cpath d='M7 22 L13 10 L19 18 L25 8' stroke='%2322d3ee' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0e14; --panel: #11151e; --line: #262d3e; --text: #e6edf3; --muted: #8b949e;
+    --violet: #8b5cf6; --cyan: #22d3ee; --good: #4ade80;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 16px 72px; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, pre { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+  header h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 0 0 12px; }
+  header p { color: var(--muted); font-size: 18px; margin: 0 0 20px; max-width: 680px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--text); font-size: 14px; }
+  .links a:hover { border-color: var(--cyan); text-decoration: none; }
+  section { margin-top: 56px; }
+  h2 { font-size: 22px; margin: 0 0 6px; }
+  .lead { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 16px; }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p { margin: 0 0 10px; }
+  .card p:last-child { margin-bottom: 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 16px 0; }
+  .stat { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .stat b { display: block; font: 600 26px/1.2 Consolas, monospace; color: var(--cyan); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  pre { background: #0d1118; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; overflow-x: auto; margin: 12px 0 0; font-size: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chips span { border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; font-size: 13px; color: var(--muted); }
+  .tag { display: inline-block; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--violet); margin-bottom: 6px; }
+  ul { margin: 8px 0 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  footer { margin-top: 64px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Exact onchain math and DeFi risk for Robinhood Chain</h1>
+    <p>I'm Maksym. I build v4quote, an open-source library that reproduces DEX quotes to the wei, and I use it to measure risk in stock-token lending.</p>
+    <div class="links">
+      <a href="https://github.com/m6xcom/v4quote">GitHub · v4quote</a>
+      <a href="https://pypi.org/project/v4quote/">PyPI</a>
+      <a href="https://x.com/0xMaxcom">X · @0xMaxcom</a>
+      <a href="mailto:maxcom@maxcom.pp.ua">maxcom@maxcom.pp.ua</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>v4quote</h2>
+    <p class="lead">Off-chain swap quotes that match the on-chain quoters exactly, or refuse instead of guessing.</p>
+    <div class="card">
+      <div class="stats">
+        <div class="stat"><b>625 / 625</b><span>quotes equal on 25 Robinhood Chain stock-token pools</span></div>
+        <div class="stat"><b>880 / 880</b><span>Metric OMM exact-output quotes equal to the unit</span></div>
+        <div class="stat"><b>0</b><span>lower bounds above the quoter (Metric exact input, 313 checked)</span></div>
+      </div>
+      <p>Every supported pool type is checked against its on-chain quoter or the pool's own <code>swap()</code> at a pinned block. A pool feature the model does not cover raises <code>UnsupportedPool</code> rather than returning a number that might be wrong.</p>
+      <div class="chips">
+        <span>Uniswap v2</span><span>Uniswap v3</span><span>Uniswap v4 + hooks</span><span>Algebra Integral</span>
+        <span>Ramses V3 / Slipstream forks</span><span>Liquidity Book</span><span>Metric OMM</span><span>ERC-4626</span>
+      </div>
+      <pre>pip install v4quote</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Research</h2>
+    <p class="lead">Read-only measurements on Robinhood Chain; every number comes from on-chain data and can be reproduced.</p>
+    <div class="card">
+      <span class="tag">Market structure · Oct 2026</span>
+      <h3>Stock tokens trade when the US market is closed</h3>
+      <p>16 stock tokens, 1,993 USDG pools, two full weeks of swaps: $651.6M of volume, 55% of it outside the regular 9:30–16:00 ET session.</p>
+      <p>The weekend DEX price follows the Monday open: correlation 0.97 and the right direction on 29 of 32 token-weekends, mostly by tracking futures and 24-hour venues from Sunday evening.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Lending risk · Nov 2026</span>
+      <h3>Stock-token collateral on Morpho</h3>
+      <p>23 stock-collateral markets, $1.93M supplied, $1.70M borrowed, mostly by a handful of large borrowers. Oracle feeds freeze from Friday close to Sunday evening (48–57 h).</p>
+      <p>DEX depth, not collateral, is the binding constraint: GOOGL pools absorb about $29k at 2% price impact, against about $308k of collateral that a 20% drop would make seizable. No large stock-collateral liquidation has happened on the chain yet; all-time liquidation bonus on stock markets is about $200.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Building now</h2>
+    <div class="card">
+      <h3>Deleverage keeper for stock-token positions</h3>
+      <p>A Safe module and bot for Morpho borrowers and vault curators on Robinhood Chain. It watches health factors and oracle freshness and trims or repays before liquidation, sizing each step with exact pool depth from v4quote instead of the oracle price.</p>
+      <ul>
+        <li>Position and per-day limits, kill switch, no funds held by the module</li>
+        <li>Independent security review before mainnet</li>
+        <li>Monitoring and alerts for curators while the keeper is in development</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Work with me</h2>
+    <p>Risk reviews of lending markets and vaults, exact quoting and pool integrations, onchain data research. Email <a href="mailto:maxcom@maxcom.pp.ua">maxcom@maxcom.pp.ua</a> or DM <a href="https://x.com/0xMaxcom">@0xMaxcom</a>.</p>
+  </section>
+
+  <footer>v4quote is GPL-2.0-or-later. Research figures are point-in-time measurements, not investment advice.</footer>
+</main>
+</body>
+</html>
